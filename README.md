@@ -17,9 +17,7 @@ Tool for converting structured csv config file into Unity Scriptable Object asse
 
 ---
 
-## Installation Guide
-
-Microsoft.CodeAnalysis.CSharp with correct version is required depend on what version of Unity you are using. It mainly depend on what version of c# your unity version is supported. For mine, Unity 2022.3, I use Microsoft.CodeAnalysis.CSharp version 4.2
+## Dependency Installation Guide
 
 ### 1: NugetNuGetForUnity install
 Required for install and manage other nuget packages.
@@ -43,8 +41,8 @@ This part is tricky, I can not find any Unity offical document on what version o
 The error about rulesets can be ignored or you can just delete the rulesets folder of this package.  
 
 ---
-
-## Quick Start & Usage
+## Installation Guide
+Install with git URL (UPM): https://github.com/BearBeen/CSVToSO.git.  
 
 You should import the sample Default (in the Samples tab of package detail in UPM window). The default assets will be installed into "Assets/Samples/CSVToSO/1.0.0/Default". Default asset:
  - DefaultExecutor (asset): contain configs for folder setup and reference of compilation setup. Set your csv folder, c# folder and Scriptable Object asset folder here.  
@@ -52,6 +50,9 @@ You should import the sample Default (in the Samples tab of package detail in UP
  - NormalConfigSchema (asset): contain configs for default normal config parsing. You will mainly interact with this. \[GenAllCs\] button will generate all the c# classes need. \[GenAllSO\] button will generate all the Scriptable Object assets.  
  - DefaultCompileSetup (asset): contain config for assembly name and name space (of your generated config .cs file).  
  - ConfigParser (folder): contain parser for the default normal config and localized text config.
+
+---
+## Quick Start & Usage
 
 Each csv config file will generate 1 c# script and 1 Scriptable Object asset.  
 Default normal config (any csv file that end with "Cfg" in its name) structure using 5 header rows (each column is a field in the generated c# class):
