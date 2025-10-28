@@ -1,0 +1,80 @@
+//DO NOT EDIT. This file is auto generated. All edit will be overrided when re-generating
+//If you do have to extending the funcitonality of this class, make an partial class with your function
+//This class is mark as partial for that use-case
+{{~##
+    Template for normal config file. They are just collection of config items. Can be sort (CSV side accountability) for binary search for better formance
+    context reqire (c# property MyValue will become my_value here):
+        + file_name: CSV file name and at the same time, the config wrapper class file name. Config structure class will be name [file_name]Structure
+        + columns: variable declarations, by header of CSV. Each column will declare a variable on config item structure.
+            + type: type of the variable
+            + name: name of the variable
+            + csv_name: name of CSV column
+            + default_val: default value of the variable
+            + type_converter: custom type converter for CSV Helper
+
+##}}
+#if UNITY_EDITOR
+using CsvHelper;
+using CsvHelper.Configuration;
+using UnityEngine;
+#endif
+using System;
+using System.Collections.Generic;
+
+{{~##
+    Wrapper class of the config. Storing list of config items.
+##~}}
+public partial class {{file_name}} : NormalConfig<{{file_name}}Structure>
+{
+    [SerializeField] private List<{{file_name}}Structure> _data = new List<{{file_name}}Structure>();
+
+    protected override List<{{file_name}}Structure> data => _data;    
+
+{{~##
+    CSV syncing
+##~}}
+#if UNITY_EDITOR
+    public override void SyncFromCSV(CsvReader csv)
+    {
+        csv.Context.RegisterClassMap<{{file_name}}StructureMap>();
+        while (csv.Read())
+        {
+            _data.Add(csv.GetRecord<{{file_name}}Structure>());
+        }
+    }
+#endif
+}
+
+{{~##
+    Structure class of the config. Defining what fields a config item has.
+##~}}
+[Serializable]
+public class {{file_name}}Structure : NormalConfigStructure
+{
+    {{~for $varDec in columns~}}
+    [SerializeField] private {{$varDec.type}} _{{$varDec.name}}{{if $varDec.default_val }} = {{$varDec.default_val}}{{end}};
+    {{~end~}}
+
+    {{~for $varDec in columns~}}
+    public {{$varDec.type}} {{$varDec.name}}
+    {
+        get => _{{$varDec.name}};
+        private set => _{{$varDec.name}} = value;
+    }
+    {{~end~}}
+}
+
+{{~##
+    Mapping class of the config structure. For CSV helper to work with, can support custom converter
+##~}}
+#if UNITY_EDITOR
+public class {{file_name}}StructureMap : ClassMap<{{file_name}}Structure>
+{
+    public {{file_name}}StructureMap()
+    {
+        {{~for $varDec in columns~}}
+        Map(_ => _.{{$varDec.name}}).Name("{{$varDec.csv_name}}"){{if $varDec.type_converter }}.TypeConverter(new {{$varDec.type_converter}}()){{end}};
+        {{~end~}}
+    }
+}
+#endif

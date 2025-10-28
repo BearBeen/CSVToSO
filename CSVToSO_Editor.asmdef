@@ -1,0 +1,16 @@
+{
+    "name": "CSVToSO_Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d2468738d57682843a03ab2b90eb5bc7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

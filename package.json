@@ -1,0 +1,20 @@
+{
+  "name": "com.github-been.csvtoso",
+  "version": "1.0.0",
+  "displayName": "CSVToSO",
+  "description": "Convert CSV into SO with 2 step: auto generate the .cs file need for the SOs and puring data from CSV into SO. All .cs file will be checked for compilable with Roslyn compilation",
+  "unity": "2021.2",
+  "keywords": [
+    "csv",
+    "scriptableobject",
+    "code generate"
+  ],
+  "license": "MIT",
+  "samples": [
+    {
+      "displayName": "Default",
+      "description": "Default converter setup, you only need to specify CSV folder, generated .cs folder and generated ScriptableObject folder. You can edit the csv header parsing rule or creating your own rule if you want",
+      "path": "Samples~/Default"
+    }
+  ]
+}
