@@ -34,11 +34,13 @@ For mine I use version 33.1.0. Just go for the latest version and only fallback 
 #### 3: Scriban
 [Offical link](https://github.com/scriban/scriban).  
 Just search it in the Nuget Packages Manager window (NuGet → Manage NuGet Packages).  
-For mine I use version 6.4.0. Just go for the latest version and only fallback if they have breaking changes and my code no longer work.
+For mine I use version 6.4.0. Just go for the latest version and only fallback if they have breaking changes and my code no longer work.  
+There is signed and unsigned version, for my package any of them will work.  
 
 #### 4: Microsoft.CodeAnalysis.CSharp
 Just search it in the Nuget Packages Manager window (NuGet → Manage NuGet Packages).  
-This part is tricky, I can not find any Unity offical document on what version of Roslyn was use in the version of Unity Editor, so I make this package with requirement of c# 9 support. And minimal unity version for that is Unity 2021.2. This package was created in Unity 2022.3 with Microsoft.CodeAnalysis.CSharp version 4.2.
+This part is tricky, I can not find any Unity offical document on what version of Roslyn was use in the version of Unity Editor, so I make this package with requirement of c# 9 support. And minimal unity version for that is Unity 2021.2. This package was created in Unity 2022.3 with Microsoft.CodeAnalysis.CSharp version 4.2.  
+The error about rulesets can be ignored or you can just delete the rulesets folder of this package.  
 
 ---
 
