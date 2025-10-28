@@ -40,7 +40,7 @@ namespace CSVToSO
                 };
                 string projectPath = Path.GetDirectoryName(Application.dataPath);
                 Dictionary<string, string> csFileDic = new Dictionary<string, string>();
-                string[] filePaths = Directory.GetFiles(_CSVFolder, "*.csv", _searchOption);
+                string[] filePaths = Directory.GetFiles(Path.Combine(projectPath, _CSVFolder), "*.csv", _searchOption);
                 genCS.GenCSPrepare(filePaths);
                 for (int i = 0; i < filePaths.Length; i++)
                 {
@@ -116,7 +116,7 @@ namespace CSVToSO
                     IncludePrivateMembers = true,
                 };
                 Dictionary<string, ScriptableObject> assetDic = new Dictionary<string, ScriptableObject>();
-                string[] filePaths = Directory.GetFiles(_CSVFolder, "*.csv", _searchOption);
+                string[] filePaths = Directory.GetFiles(Path.Combine(projectPath, _CSVFolder), "*.csv", _searchOption);
                 genSO.GenSOPrepare(filePaths);
                 for (int i = 0; i < filePaths.Length; i++)
                 {
